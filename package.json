@@ -1,0 +1,25 @@
+{
+  "name": "fortniteranker",
+  "version": "1.0.0",
+  "description": "Add Fortnite names and platforms and they will be ranked in order of skill.",
+  "main": "testAPI.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "fortnite",
+    "psn",
+    "pc",
+    "ranker",
+    "rank",
+    "xbox",
+    "xbl",
+    "skills",
+    "stats"
+  ],
+  "author": [
+    "Daniel Mil", 
+    "Luke Ramsay"
+  ],
+  "license": "ISC"
+}
