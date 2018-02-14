@@ -8,6 +8,11 @@ const PORT = 3400;
 
 const client = new Fortnite('14116965-82c4-4733-bb71-bc4f6ea9f9d1');
 
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	next();
+});
+
 app.get('/', (req, res) => {
 	console.log('-- Parameters --');
 	console.log(req.query);

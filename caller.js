@@ -4,12 +4,12 @@ window.onload = function () {
 	call.onreadystatechange = function() {
 		if (call.readyState == 4) {
 			if (call.status == 200) {
-				var data = http.response;
-				console.log(data);
+				let response = JSON.parse(call.responseText);
+				console.log(response);
 			}
 		}
 	}
 
-	call.open("GET", "localhost:3400/endpoint?arg1=OnlyLukey&arg2=OnlyLukey", true);
+	call.open("GET", "http://localhost:3400/?arg1=OnlyLukey&arg2=OnlyLukey", true);
 	call.send();
 }
