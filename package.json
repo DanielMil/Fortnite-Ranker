@@ -23,6 +23,7 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.2",
     "fortnite": "^3.0.0"
   }
 }
