@@ -18,8 +18,11 @@
     "stats"
   ],
   "author": [
-    "Daniel Mil", 
+    "Daniel Mil",
     "Luke Ramsay"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "fortnite": "^3.0.0"
+  }
 }
