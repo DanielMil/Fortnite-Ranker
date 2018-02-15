@@ -14,19 +14,12 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-	console.log('-- Parameters --');
-	console.log(req.query);
-	res.status(200).send({
-		randomNumber: Math.random()
-	});
-});
+	const username = req.query.username;
+	const platform = req.query.platform; 
 
-app.get('/:username', (req, res) => {
-	const username = req.params.username;
-
-	client.getInfo(username, 'psn')
+	client.getInfo(username, platform)
 		.then((data) => {
-			res.status(200).send(data);
+			res.status(200).send(data.lifetimeStats[6].value);
 		})
 		.catch((err) => {
 			res.status(500).send(err);
