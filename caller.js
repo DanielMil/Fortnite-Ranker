@@ -10,12 +10,8 @@ window.onload = function () {
 		}
 	}
 
-	call.open("GET", "http://localhost:3400/?username=OnlyLukey&platform=psn", true);
+	call.open("GET", "http://localhost:3400/?username=canada_is_cold&platform=pc", true);
 	call.send();
 }
 
 
-for (int i = 0; i < var.length, i++) {
-	setScore = user[i].callerFunction;
-	delay(1000)
-}

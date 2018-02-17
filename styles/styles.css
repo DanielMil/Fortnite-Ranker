@@ -1,6 +1,6 @@
 body {
   width: 100%;
-  background-image: url("/Users/lukeramsay/Desktop/Work/Websites/Fortnite/images/fortnitebackground.png");
+  background-image: url("../images/fortnitebackground.png");
 
   text-align: center;
 }
@@ -29,7 +29,7 @@ a:hover {
 .content-area {
   vertical-align: middle;
   width: 45%;
-  margin: 0auto;
+  margin: 0 auto;
   margin-left: 325px;
   padding: 25px 0px 25px 0px;
   text-align:center;
@@ -79,6 +79,8 @@ a:hover {
   right: 0;
   left: 0;
   bottom: 0;
+  height: 100px; 
   margin: 0px 0px 20px 0px;
   text-align: center;
+  overflow: hidden;
 }
