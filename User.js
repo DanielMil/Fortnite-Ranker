@@ -29,12 +29,20 @@ class User {
 	set score (value) {
 		this._score = value; 
 	}
-}
+} 
+
+window.onload = function () {
+	
+	var loadScreen = document.getElementById("load-screen");
+	loadScreen.style.display = "none"; 
+
+	var results = document.getElementById("results");
+	results.style.display = "none"; 
+
+}	
 
 var users = [new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0)];
-var usersSorted = [new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0)];
 
-//This function gets called when the user hits the 'Rank' button
 function getIdAndPlatform () { 
 
 	users[0]._id = document.getElementById("Teammate-1").value;
@@ -45,11 +53,13 @@ function getIdAndPlatform () {
 	users[0]._platform = document.getElementById("platform1").value;
 	users[1]._platform = document.getElementById("platform2").value;
 	users[2]._platform = document.getElementById("platform3").value;
-	users[3]._platform = document.getElementById("platform4").value;
+	users[3]._platform = document.getElementById("platform4").value; 
 
-	for (var i = 0; i < users.length; i++) {
-		console.log("Name: " + users[i].id + " Platform: " + users[i].platform + "  Score: " + users[i].score); 
-	}
+	var loadScreen = document.getElementById("load-screen");
+	loadScreen.style.display = "block"; 
+
+	var toHide = document.getElementById("container-area");
+	toHide.style.display = "none";
 
 	if (users[3].platform != "null") {
 		getPlayerScores(sortUsersByScore); 
@@ -67,7 +77,7 @@ function getPlayerScores (callback) {
 
 	setTimeout(function() {
 		callback(); 
-	}, 4000); 
+	}, 4200); 
 }
 
 function caller (userId, userPlatform, index) {
@@ -83,7 +93,7 @@ function caller (userId, userPlatform, index) {
 				users[index].score = response; 
 			} else {
 				console.log("Player " + playerNum + " not found."); 
-				users[index].score = -1; 
+				users[index].score = 0; 
 			}
 		}
 	}
@@ -93,22 +103,41 @@ function caller (userId, userPlatform, index) {
 }
 
 function sortUsersByScore () {
- /*
-  var sorted = false
   
-  while (!sorted){
-    sorted = true;
-    arr.forEach(function (element, index, array){
-      if (users[index].score > users[index+1].score) {
-        array[index] = array[index+1];
-        array[index+1] = element;
-        sorted = false;
-      }
-    });
-  }
-*/
-	for (var i = 0; i < users.length; i++) {
-		console.log("Username: " + users[i].id + " Score: " + users[i].score); 
-	}
+  	var len = users.length;
+    var outputString = ""; 
+
+ 	for (var i = 0; i < len; i++) {
+        for(var j = 0; j < len - 1; j++) { 
+        	if (parseInt(users[j].score) < parseInt(users[j + 1].score)) {
+	          var temp = users[j];
+	          users[j] = users[j+1];
+	          users[j + 1] = temp;
+      		}
+       	}
+ 	}
+
+  setTimeout(function() {
+		outputResults();
+	}, 50); 
+}
+
+function outputResults () {
+
+	var loadScreen = document.getElementById("load-screen");
+	loadScreen.style.display = "none"; 
+
+	var results = document.getElementById("results");
+	results.style.display = "block"; 
+
+	var outputString1 = "1: " + users[0].id + " Score: " + users[0].score; 
+	var outputString2 = "2: " + users[1].id + " Score: " + users[1].score; 
+	var outputString3 = "3: " + users[2].id + " Score: " + users[2].score; 
+	var outputString4 = "4: " + users[3].id + " Score: " + users[3].score; 
+	document.getElementById("results1").innerHTML = outputString1;
+	document.getElementById("results2").innerHTML = outputString2; 
+	document.getElementById("results3").innerHTML = outputString3; 
+	document.getElementById("results4").innerHTML = outputString4;
 
 }
+

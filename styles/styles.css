@@ -29,12 +29,22 @@ a:hover {
 .content-area {
   vertical-align: middle;
   width: 45%;
+  height: 330px; 
   margin: 0 auto;
   margin-left: 325px;
   padding: 25px 0px 25px 0px;
   text-align:center;
   background-color: black;
   opacity: .6;
+}
+
+.results {
+
+  padding: 50px 0px 50px 0px;
+  color: #ffffff;
+  font-family: myFirstFont;
+  text-transform: uppercase;
+
 }
 
 .col-xs-6 {
