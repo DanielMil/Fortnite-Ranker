@@ -1,8 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
   width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-image: url("../images/fortnitebackground.png");
-
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -29,22 +37,16 @@ a:hover {
 .content-area {
   vertical-align: middle;
   width: 45%;
-  height: 330px; 
+  height: 330px;
   margin: 0 auto;
-  margin-left: 325px;
   padding: 25px 0px 25px 0px;
   text-align:center;
   background-color: black;
   opacity: .6;
 }
 
-.results {
-
-  padding: 50px 0px 50px 0px;
-  color: #ffffff;
-  font-family: myFirstFont;
-  text-transform: uppercase;
-
+.user-input-labels {
+  font-size: 32px;
 }
 
 .col-xs-6 {
@@ -53,9 +55,6 @@ a:hover {
   padding: 5px 0px 10px 0px;
 }
 
-.player-input {
-  border-radius: 40;
-}
 
 .submit-button {
   margin: 10px 0px 0px 0px;
@@ -69,8 +68,7 @@ a:hover {
 .github {
   background-color: white;
   border-radius: 50%;
-
-    transition: 0.7s ease;
+  transition: 0.7s ease;
 }
 
 .fa-github {
@@ -84,13 +82,180 @@ a:hover {
   background-color: #808080;
 }
 
-.footer {
-  position: absolute;
+.container {
+  flex: 1 0 auto;
+}
+
+footer {
   right: 0;
   left: 0;
   bottom: 0;
-  height: 100px; 
-  margin: 0px 0px 20px 0px;
   text-align: center;
-  overflow: hidden;
+  height: -50px;
+  flex-shrink: 0;
 }
+
+#load-screen {
+  margin: 150px 0px 0px 0px;
+}
+
+.star-icons {
+  display: inline;
+  height: 45px;
+  width: 45px;
+  margin: 15px 0px 0px 50px;
+}
+
+.results {
+  margin: 0px 0px 0px 0px;
+  color: #ffffff;
+  font-family: myFirstFont;
+  text-transform: uppercase;
+  max-width: 400px;
+}
+
+#results1, #results2, #results3, #results4 {
+  vertical-align: middle;
+  font-size: 18px;
+  max-width: 100px;
+}
+
+@media (max-width: 319px) {
+  body {
+    display: none;
+  }
+}
+
+@media (max-width:510px) {
+
+  .player-names {
+    max-width: 45px;
+    margin-left: 50px;
+  }
+
+  .player-platform {
+    margin-right: 50px;
+  }
+
+  .user-input-labels {
+    font-size:18px;
+  }
+
+  .user-input-labels-players {
+    margin-left:50px;
+  }
+
+  .user-input-labels-platform {
+    margin-right: 50px;
+  }
+
+
+  .content-area {
+    margin: 0 auto;
+    width: 250px;
+  }
+
+
+}
+
+@media (max-width:410px) {
+
+  .player-names {
+    max-width: 35px;
+  }
+
+  .user-input-labels {
+    font-size:16px;
+  }
+
+  .content-area {
+    margin: 0 auto;
+    width: 150px;
+  }
+
+}
+
+@media (max-width:767px) {
+
+  .content-area {
+    margin: 0 auto;
+    width: 300px;
+  }
+
+
+  .player-names {
+    max-width: 55px;
+ }
+
+ .player-platform {
+   max-width: 30px;
+ }
+
+ .submit-button {
+   max-width: 90px;
+   max-height: 45px;
+   font-size: 12px;
+   text-align: center;
+ }
+
+ .user-input-labels {
+   font-size:20px;
+ }
+
+}
+
+
+@media (max-width:991px) {
+
+  .content-area {
+    vertical-align: middle;
+  }
+
+  .player-names {
+    max-width: 75px;
+ }
+
+ .player-platform {
+   max-width: 50px;
+ }
+
+ .submit-button {
+   max-width: 110px;
+   max-height: 45px;
+   font-size: 12px;
+   text-align: center;
+ }
+
+ .user-input-labels {
+   font-size:22px;
+ }
+
+
+ #results1, #results2, #results3, #results4 {
+   vertical-align: middle;
+   font-size: 16px;
+   max-width: 50%;
+   margin: 0 auto;
+ }
+
+ .star-icons {
+   height: 35px;
+   width: 35px;
+   max-width: 50%;
+   margin: 0 auto;
+ }
+
+ .results {
+   color: #ffffff;
+   font-family: myFirstFont;
+   text-transform: uppercase;
+   max-width: 400px;
+   vertical-align: middle;
+   height: 300px;
+ }
+
+ .content-area {
+   text-align: center;
+   margin: 0 auto;
+   width: 400px;
+ }
