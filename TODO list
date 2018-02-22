@@ -1,11 +1,10 @@
-- Hide API key
 X padding under footer 
 - loading screen alignment 
 - results page alignment 
 - resutls page display size and format
 X return with saved info button
 - info button to explain scores
-- display cool info
+X display cool info
 	-average survival time
 	-kills 
 	-wins
@@ -13,3 +12,4 @@ X return with saved info button
 	-kills per minute
 	-(score -primary ranking method)
 - generate results button opaque
+- responsiveness 2.0
