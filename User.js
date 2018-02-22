@@ -170,3 +170,20 @@ function outputResults () {
 
 }
 
+function savePlayers () {
+
+	var loadScreen = document.getElementById("load-screen");
+	loadScreen.style.display = "none";
+
+	var results = document.getElementById("results");
+	results.style.display = "none";
+
+	var toHide = document.getElementById("container-area");
+	toHide.style.display = "block";
+
+	document.getElementById("Teammate-1").innerHTML = users[0];
+	document.getElementById("Teammate-2").innerHTML = users[1];
+	document.getElementById("Teammate-3").innerHTML = users[2];
+	document.getElementById("Teammate-4").innerHTML = users[3];
+
+}
