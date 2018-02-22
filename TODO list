@@ -1,0 +1,15 @@
+- Hide API key
+- padding under footer 
+- loading screen alignment 
+- results page alignment 
+- resutls page display size and format
+- return with saved info button
+- info button to explain scores
+- display cool info
+	-average survival time
+	-kills 
+	-wins
+	-kd
+	-kills per minute
+	-(score -primary ranking method)
+- generate results button opaque

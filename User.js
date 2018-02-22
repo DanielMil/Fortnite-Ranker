@@ -1,9 +1,15 @@
 class User {
 	
-	constructor (id, platform, score) {
+	constructor (id, platform, score, kd, ast, kpm, kills, wins, matches) {
 		this._id = id;
 		this._platform = platform;
 		this._score = score;
+		this._kd = kd;
+		this._kpm = kpm;
+		this._kills = kills;
+		this._wins = wins;
+		this._ast = ast; 
+		this._matches = matches;
 	}
 	
 	get id () {
@@ -29,6 +35,11 @@ class User {
 	set score (value) {
 		this._score = value; 
 	}
+
+	toString() { 
+		return ( "User: " + this.id + " Platform: " + this.platform  + " Score: " + this.score + " KD: " + this.kd + " KPM: " + this.kpm + " Kills: " + this.kills + " Wins: " + this.wins + " Average Survival Time: " + this.ast + " Matches Played: " + this.matches); 
+	}
+
 } 
 
 window.onload = function () {
@@ -41,7 +52,7 @@ window.onload = function () {
 
 }	
 
-var users = [new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0), new User("null", "null", 0)];
+var users = [new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0)];
 
 function getIdAndPlatform () { 
 
@@ -89,11 +100,23 @@ function caller (userId, userPlatform, index) {
 	call.onreadystatechange = function() {
 		if (call.readyState == 4) {
 			if (call.status == 200) {
-				let response = call.responseText;
-				users[index].score = response; 
+				let response = JSON.parse(call.responseText);
+				users[index].score = response.lifetimeStats[6].value; 
+				users[index].kpm = response.lifetimeStats[12].value;
+				users[index].kills = response.lifetimeStats[10].value; 
+				users[index].ast = response.lifetimeStats[14].value; 
+				users[index].kd = response.lifetimeStats[11].value; 
+				users[index].wins = response.lifetimeStats[8].value; 
+				users[index].matches = response.lifetimeStats[7].value; 
 			} else {
 				console.log("Player " + playerNum + " not found."); 
 				users[index].score = 0; 
+				users[index].kpm = 0;
+				users[index].kills = 0;
+				users[index].ast = 0;
+				users[index].kd = 0;
+				users[index].wins = 0;
+				users[index].matches = 0; 
 			}
 		}
 	}
@@ -109,7 +132,9 @@ function sortUsersByScore () {
 
  	for (var i = 0; i < len; i++) {
         for(var j = 0; j < len - 1; j++) { 
-        	if (parseInt(users[j].score) < parseInt(users[j + 1].score)) {
+			users[j].score = users[j].score.toString().replace(/,/g, "");
+			users[j+1].score = users[j+1].score.toString().replace(/,/g, "");
+        	if (parseInt(users[j].score, 10) < parseInt(users[j + 1].score, 10)) {
 	          var temp = users[j];
 	          users[j] = users[j+1];
 	          users[j + 1] = temp;
@@ -123,6 +148,10 @@ function sortUsersByScore () {
 }
 
 function outputResults () {
+
+	for (var i in users) {
+		console.log(users[i].toString()); 
+	}
 
 	var loadScreen = document.getElementById("load-screen");
 	loadScreen.style.display = "none"; 
