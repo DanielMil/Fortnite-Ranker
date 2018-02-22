@@ -1,5 +1,5 @@
 class User {
-	
+
 	constructor (id, platform, score, kd, ast, kpm, kills, wins, matches) {
 		this._id = id;
 		this._platform = platform;
@@ -8,53 +8,53 @@ class User {
 		this._kpm = kpm;
 		this._kills = kills;
 		this._wins = wins;
-		this._ast = ast; 
+		this._ast = ast;
 		this._matches = matches;
 	}
-	
+
 	get id () {
 		return this._id;
 	}
-	
+
 	set id (value) {
-		this._id = value; 
+		this._id = value;
 	}
-	
+
 	get platform () {
-		return this._platform; 
+		return this._platform;
 	}
-	
+
 	set platform (value) {
 		this._platform = value;
 	}
-	
+
 	get score () {
 		return this._score;
 	}
-	
+
 	set score (value) {
-		this._score = value; 
+		this._score = value;
 	}
 
-	toString() { 
-		return ( "User: " + this.id + " Platform: " + this.platform  + " Score: " + this.score + " KD: " + this.kd + " KPM: " + this.kpm + " Kills: " + this.kills + " Wins: " + this.wins + " Average Survival Time: " + this.ast + " Matches Played: " + this.matches); 
+	toString() {
+		return (this.id + " Score: " + this.score + " Matches Played: " + this.matches + " Wins: " + this.wins + "Kills: " + this.kills + " KD: " + this.kd + " KPM: " + this.kpm + " Average Survival Time: " + this.ast);
 	}
 
-} 
+}
 
 window.onload = function () {
-	
+
 	var loadScreen = document.getElementById("load-screen");
-	loadScreen.style.display = "none"; 
+	loadScreen.style.display = "none";
 
 	var results = document.getElementById("results");
-	results.style.display = "none"; 
+	results.style.display = "none";
 
-}	
+}
 
 var users = [new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0)];
 
-function getIdAndPlatform () { 
+function getIdAndPlatform () {
 
 	users[0]._id = document.getElementById("Teammate-1").value;
 	users[1]._id = document.getElementById("Teammate-2").value;
@@ -64,16 +64,16 @@ function getIdAndPlatform () {
 	users[0]._platform = document.getElementById("platform1").value;
 	users[1]._platform = document.getElementById("platform2").value;
 	users[2]._platform = document.getElementById("platform3").value;
-	users[3]._platform = document.getElementById("platform4").value; 
+	users[3]._platform = document.getElementById("platform4").value;
 
 	var loadScreen = document.getElementById("load-screen");
-	loadScreen.style.display = "block"; 
+	loadScreen.style.display = "block";
 
 	var toHide = document.getElementById("container-area");
 	toHide.style.display = "none";
 
 	if (users[3].platform != "null") {
-		getPlayerScores(sortUsersByScore); 
+		getPlayerScores(sortUsersByScore);
 	}
 }
 
@@ -82,41 +82,41 @@ function getPlayerScores (callback) {
 	//Loop to call server with delay
 	for (let i = 0; i < users.length; i++) {
 		setTimeout(function() {
-  			caller(users[i].id, users[i].platform, i); 
+  			caller(users[i].id, users[i].platform, i);
   		}, 1000 * i);
 	}
 
 	setTimeout(function() {
-		callback(); 
-	}, 4200); 
+		callback();
+	}, 4200);
 }
 
 function caller (userId, userPlatform, index) {
 
-	var call = new XMLHttpRequest(); 
+	var call = new XMLHttpRequest();
 
-	var playerNum = index + 1; 
+	var playerNum = index + 1;
 
 	call.onreadystatechange = function() {
 		if (call.readyState == 4) {
 			if (call.status == 200) {
 				let response = JSON.parse(call.responseText);
-				users[index].score = response.lifetimeStats[6].value; 
+				users[index].score = response.lifetimeStats[6].value;
 				users[index].kpm = response.lifetimeStats[12].value;
-				users[index].kills = response.lifetimeStats[10].value; 
-				users[index].ast = response.lifetimeStats[14].value; 
-				users[index].kd = response.lifetimeStats[11].value; 
-				users[index].wins = response.lifetimeStats[8].value; 
-				users[index].matches = response.lifetimeStats[7].value; 
+				users[index].kills = response.lifetimeStats[10].value;
+				users[index].ast = response.lifetimeStats[14].value;
+				users[index].kd = response.lifetimeStats[11].value;
+				users[index].wins = response.lifetimeStats[8].value;
+				users[index].matches = response.lifetimeStats[7].value;
 			} else {
-				console.log("Player " + playerNum + " not found."); 
-				users[index].score = 0; 
+				console.log("Player " + playerNum + " not found.");
+				users[index].score = 0;
 				users[index].kpm = 0;
 				users[index].kills = 0;
 				users[index].ast = 0;
 				users[index].kd = 0;
 				users[index].wins = 0;
-				users[index].matches = 0; 
+				users[index].matches = 0;
 			}
 		}
 	}
@@ -126,12 +126,12 @@ function caller (userId, userPlatform, index) {
 }
 
 function sortUsersByScore () {
-  
+
   	var len = users.length;
-    var outputString = ""; 
+    var outputString = "";
 
  	for (var i = 0; i < len; i++) {
-        for(var j = 0; j < len - 1; j++) { 
+        for(var j = 0; j < len - 1; j++) {
 			users[j].score = users[j].score.toString().replace(/,/g, "");
 			users[j+1].score = users[j+1].score.toString().replace(/,/g, "");
         	if (parseInt(users[j].score, 10) < parseInt(users[j + 1].score, 10)) {
@@ -144,28 +144,28 @@ function sortUsersByScore () {
 
   setTimeout(function() {
 		outputResults();
-	}, 50); 
+	}, 50);
 }
 
 function outputResults () {
 
 	for (var i in users) {
-		console.log(users[i].toString()); 
+		console.log(users[i].toString());
 	}
 
 	var loadScreen = document.getElementById("load-screen");
-	loadScreen.style.display = "none"; 
+	loadScreen.style.display = "none";
 
 	var results = document.getElementById("results");
-	results.style.display = "block"; 
+	results.style.display = "block";
 
-	var outputString1 = "1: " + users[0].id + " Score: " + users[0].score; 
-	var outputString2 = "2: " + users[1].id + " Score: " + users[1].score; 
-	var outputString3 = "3: " + users[2].id + " Score: " + users[2].score; 
-	var outputString4 = "4: " + users[3].id + " Score: " + users[3].score; 
+	var outputString1 = users[0].toString();
+	var outputString2 = users[1].toString();
+	var outputString3 = users[2].toString();
+	var outputString4 = users[3].toString();
 	document.getElementById("results1").innerHTML = outputString1;
-	document.getElementById("results2").innerHTML = outputString2; 
-	document.getElementById("results3").innerHTML = outputString3; 
+	document.getElementById("results2").innerHTML = outputString2;
+	document.getElementById("results3").innerHTML = outputString3;
 	document.getElementById("results4").innerHTML = outputString4;
 
 }
