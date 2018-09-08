@@ -91,6 +91,7 @@ function getPlayerScores (callback) {
 	}, 4200);
 }
 
+//Make requests to server and fill array of stats
 function caller (userId, userPlatform, index) {
 
 	var call = new XMLHttpRequest();
@@ -125,6 +126,7 @@ function caller (userId, userPlatform, index) {
 	call.send();
 }
 
+//Sort all users by stats
 function sortUsersByScore () {
 
   	var len = users.length;
@@ -132,6 +134,7 @@ function sortUsersByScore () {
 
  	for (var i = 0; i < len; i++) {
         for(var j = 0; j < len - 1; j++) {
+			//REGEX to remove commas from scores so that they can be parsed to int.
 			users[j].score = users[j].score.toString().replace(/,/g, "");
 			users[j+1].score = users[j+1].score.toString().replace(/,/g, "");
         	if (parseInt(users[j].score, 10) < parseInt(users[j + 1].score, 10)) {
@@ -147,6 +150,7 @@ function sortUsersByScore () {
 	}, 50);
 }
 
+//Display results to final screen. Display intermediate loading screen.
 function outputResults () {
 
 	for (var i in users) {
@@ -170,6 +174,7 @@ function outputResults () {
 
 }
 
+//Allows users to save the state of the input so that they don't need to retype everything.
 function savePlayers () {
 
 	var loadScreen = document.getElementById("load-screen");
