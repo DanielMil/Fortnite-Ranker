@@ -4,26 +4,13 @@
   "description": "Add Fortnite names and platforms and they will be ranked in order of skill.",
   "main": "testAPI.js",
   "scripts": {
-    "test": "test"
+    "start": "node testAPI.js"
   },
   "keywords": [
-    "fortnite",
-    "psn",
-    "pc",
-    "ranker",
-    "rank",
-    "xbox",
-    "xbl",
-    "skills",
-    "stats"
   ],
-  "author": [
-    "Daniel Mil",
-    "Luke Ramsay"
-  ],
+  "author": "Daniel Mil",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
-    "fortnite": "^3.0.0"
+    "express": "^4.16.3"
   }
 }

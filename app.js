@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 	const username = req.query.username;
 	const platform = req.query.platform; 
 
-	client.getInfo(username, platform)
+	client.user(username, platform)
 		.then((data) => {
 			res.status(200).send(data);
 		})
