@@ -42,6 +42,7 @@ class User {
 
 }
 
+//Hide loading screen and final display screen onload.
 window.onload = function () {
 
 	var loadScreen = document.getElementById("load-screen");
@@ -54,6 +55,7 @@ window.onload = function () {
 
 var users = [new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0), new User("null", "null", 0, 0, 0, 0, 0, 0, 0)];
 
+//Get info from initial screen.
 function getIdAndPlatform () {
 
 	users[0]._id = document.getElementById("Teammate-1").value;
@@ -79,7 +81,8 @@ function getIdAndPlatform () {
 
 function getPlayerScores (callback) {
 
-	//Loop to call server with delay
+	//Loop to call server with delay.
+	//Delay MUST be more than 1000 to comply with API rules. 
 	for (let i = 0; i < users.length; i++) {
 		setTimeout(function() {
   			caller(users[i].id, users[i].platform, i);
@@ -91,7 +94,7 @@ function getPlayerScores (callback) {
 	}, 4200);
 }
 
-//Make requests to server and fill array of stats
+//Make requests to server and fill array of stats.
 function caller (userId, userPlatform, index) {
 
 	var call = new XMLHttpRequest();
