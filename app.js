@@ -1,3 +1,6 @@
+//This Node server is implemented simply because the API does not allow for cross-origin requests. 
+//All requests are therefore routed through here first.
+
 'use strict';
 
 const express = require('express');
